@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap');
+
+:root {
+    /* ============= Colors ================ */
+    --pry1-dark-blue: hsl(233, 26%, 24%);
+    --pry2-lime-green: hsl(136, 65%, 51%);
+    --pry3-bright-cyan: hsl(192, 70%, 51%);
+    --grad--bg: linear-gradient(to right, var(--pry2-lime-green), var(--pry3-bright-cyan));
+
+    /* ===== Neutral Colors ================ */
+
+    --nt-grayish-blue: hsl(233, 8%, 62%);
+    --nt-light-grayish-blue: hsl(220, 16%, 96%);
+    --nt-very-light-gray: hsl(0, 0%, 98%);
+    --nt-white: hsl(0, 0%, 100%);
+
+
+    /* ===== Font Sizes ================ */
+    --fnt-md: 1.125rem; /*18px*/
+    --fnt-sm: 0.875rem; /*14px*/   
+}
+
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    /* background: red; */
+    margin: 0;
+    padding: 0;
+    line-height: 1.3;
+    font-family: 'Public sans', sans-serif;
+    font-size: var(--fnt-md);
+    font-weight: 300;
+    color: var(--nt-very-light-gray);
+}
+
+a, a:hover, a:visited  {
+    text-decoration: none;
+}
+
+
+
+
+.nav {
+    padding: 1.0625rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+} 
+
+.nav-logo img {
+    width: 8.8125rem;
+    height: 1.375rem;
+}
+
+.nav-links a{
+    font-size: var(--fnt-sm);
+    color: var(--nt-grayish-blue);
+    position: relative;
+    transition: color 250ms ease-in-out;
+}
+
+.nav-links a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 3px;
+    left: 0;
+    right: 0;
+    bottom: -31px;
+    background: var(--grad--bg);
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+
+.nav-links a:not(:last-child) {
+    margin-right: 2rem;
+}
+
+.nav-links a:hover {
+    color: var(--pry1-dark-blue);
+    font-weight: 400;
+}
+
+.nav-links a:hover::before {
+    opacity: 1;
+}
+
+.button {
+    padding: 0.875rem 2.1875rem;
+    background: var(--grad--bg);
+    border-radius: 50px;
+    border: 0;
+    color: var(--nt-white);
+    font-weight: 400;
+    font-size: var(--fnt-sm);
+    cursor: pointer;
+    transition: opacity 250ms ease-in;
+}
+
+.button:hover {
+    opacity: 0.65;
+}
+
+/* ============ Mobile ================== */
+
+/* ============ Navbar ================ */
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--pry1-dark-blue);
+}
+
+.hamburger span:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+/* ================== MEDIA QUERIES ========================== */
+
+@media screen and (max-width: 64em) {
+    .nav-button {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 64em) {
+    .hamburger {
+        display: none;
+    }
+}
