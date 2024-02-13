@@ -16,6 +16,7 @@
 
 
     /* ===== Font Sizes ================ */
+    --fnt-size-h1:3.25rem; /*52px*/
     --fnt-md: 1.125rem; /*18px*/
     --fnt-sm: 0.875rem; /*14px*/   
 }
@@ -38,21 +39,79 @@ body {
     font-family: 'Public sans', sans-serif;
     font-size: var(--fnt-md);
     font-weight: 300;
-    color: var(--nt-very-light-gray);
+    color: var(--nt-grayish-blue);
+    overflow-x: hidden;
+}
+
+h1,h2,h3 {
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--pry1-dark-blue);
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2.313rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+   font-size: 1.875rem; 
+   margin-bottom: 1.5625rem;
 }
 
 a, a:hover, a:visited  {
     text-decoration: none;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: 69.375rem;
+}
 
+.container-top {
+    padding-top: 4.35rem;
+}
+
+.container-right {
+    padding-right: 1.5rem;
+}
+
+.container-bottom {
+    padding-bottom: 4.35rem;
+}
+
+.container-left {
+    padding-left: 1.5rem;
+}
+
+.container-x {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.container-y {
+    padding-top: 4.35rem;
+    padding-bottom: 4.35rem;
+}
+
+.container-all {
+    padding-top: 4.35rem;
+    padding-right: 1.5rem;
+    padding-bottom: 4.35rem;
+    padding-left: 1.5rem;
+}
 
 
 .nav {
-    padding: 1.0625rem 1.5rem;
+    position: relative;
+    padding-top: 1.0625rem;
+    padding-bottom: 1.0625rem;
+    background: var(--nt-white);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 3;
     
 } 
 
@@ -95,6 +154,7 @@ a, a:hover, a:visited  {
 }
 
 .button {
+    display: inline-block;
     padding: 0.875rem 2.1875rem;
     background: var(--grad--bg);
     border-radius: 50px;
@@ -150,15 +210,16 @@ a, a:hover, a:visited  {
 .overlay {
     /* opacity: 0; */
     position: fixed;
-    top: 5rem;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: linear-gradient(var(--pry1-dark-blue), transparent);
+    z-index: 1;
 }
 
-#header.toggle-menu .overlay.fade-in {
-    animation: fade-in 300ms ease-in-out forwards;
+#header.toggle-menu .overlay.fade-in, #header.toggle-menu .mobile-links.fade-in {
+    animation: fade-in 200ms ease-in-out forwards;
 }
 
 @keyframes fade-in {
@@ -177,8 +238,8 @@ a, a:hover, a:visited  {
 }
 
 
-#header .overlay.fade-out {
-    animation: fade-out 300ms ease-in-out forwards;
+#header .overlay.fade-out, #header .mobile-links.fade-out {
+    animation: fade-out 200ms ease-in-out forwards;
 }
 
 
@@ -197,16 +258,505 @@ a, a:hover, a:visited  {
     }
 }
 
+
+.mobile-links {
+    position: absolute;
+    background: var(--nt-white);
+    padding: 1.625rem;
+    margin-top: 1.5rem;
+    border-radius: 3px;
+    width: calc(100% - 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 2;
+}
+
+/* #header.toggle-menu .mobile-links.fade-in {
+    animation: fade-in 300ms ease-in-out forwards;
+}
+
+#header .mobile-links.fade-out {
+    animation: fade-out 300ms ease-in-out forwards;
+} */
+
+.mobile-links a {
+    color: var(--pry1-dark-blue);
+    padding: 0.625rem;
+    text-align: center;
+}
+
+/*Created a class to lock the scroll when the mobile menu is open*/
+.no-scroll {
+    overflow: hidden;
+}
+
+
+/* =============== NEXT GENERATION DIGITAL BANKING SECTION ================== */
+.hero {
+    background: var(--nt-very-light-gray);
+}
+
+.hero-img {
+    position: relative;
+    background-image: url('./images/bg-intro-mobile.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 17.5rem;
+}
+
+.hero-img::after {
+    content: '';
+    position: absolute;
+    background-image: url('./images/image-mockups.png');
+    width: 100%;
+    height: 100%;
+    background-size: 86%; /*Image was too big, while we wanted it to maintain the width of its parent element it needed to be reduced*/
+    background-repeat: no-repeat;
+    background-position: center bottom; /*Horizontal Vertical*/
+}
+
+.hero-text {
+    text-align: center;
+}
+
+
+
+/* ================== 2ND SECTION FEATURES ===================== */
+.features  {
+    background: var(--nt-light-grayish-blue);
+}
+.feature-intro {
+    margin-bottom: 3.75rem;
+}
+
+.feature-item {
+    padding: 0.9375rem;
+}
+
+.feature-icon {
+    margin-bottom: 1.875rem;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--pry1-dark-blue);
+    margin-bottom: 1rem;
+}
+
+.feature-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+
+/* ================= ARTICLES ===================== */
+.articles {
+    background-color: var(--nt-light-grayish-blue);
+    padding-bottom: 5rem;
+}
+
+
+.article-grid {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(14.375rem, 1fr));  Autofit automatically issues the same size to all grid-items and keeps maintains a similiar width across the items while changing media queries however it's not always aesthethic looking pertaining to design and developer rules. */
+    grid-template-columns: 1fr;
+    gap: 1.875rem;
+}
+
+.article-item {
+    background-color: var(--nt-white);
+    border-radius: 0.3125rem;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: all 150ms ease-in-out;
+}
+
+.article-item:hover {
+    transform: scale(1.05);
+}
+
+.article-item:hover .article-title {
+    color: var(--pry3-bright-cyan)
+}
+
+.article-img {
+    height: 12.5rem;
+    background-size: cover !important; 
+    background-repeat: no-repeat !important; 
+    background-position: center center !important; 
+}
+
+
+.article-text {
+    padding: 1.875rem 1.5625rem;
+    color: var(--nt-grayish-blue);
+}
+
+.article-author {
+    font-size: 0.625rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-title {
+    font-size: 1.0625rem;
+    line-height: 1.2;
+    color: var(--pry1-dark-blue);
+    margin-bottom: 0.5rem;
+}
+
+.article-description {
+    font-size: 0.8125rem;
+}
+
+
+/* =============== FOOTER ============ */
+.footer {
+    background-color: var(--pry1-dark-blue);
+    color: var(--nt-white);
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--nt-white)
+}
+ 
+.footer-logo, .footer-socials a {
+    display: inline-block;
+}
+
+.footer-socials a:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.footer-socials a svg path {
+    transition: 150ms ease-in-out;
+}
+
+.footer-socials a:hover svg path {
+    fill: var(--pry3-bright-cyan);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9375rem;
+}
+
+.footer-links a {
+    line-height: 2.25;
+    transition: 150ms ease-in-out;
+}
+
+.footer-links a:hover {
+    color: var(--pry3-bright-cyan);
+}
+
+.footer-button .button {
+    opacity: 1;
+}
+
+
+.footer-button .button:hover {
+    /* filter: brightness(105%); */
+    filter: grayscale(0.3);
+}
+
+.footer-copyright {
+    font-size: 0.8125rem;
+    color: var(--nt-grayish-blue);
+}
+
+
+.attribution {
+    background-color: var(--pry1-dark-blue);
+}
+
+
+
+
 /* ================== MEDIA QUERIES ========================== */
 
-@media screen and (max-width: 64em) {
-    .nav-button {
+@media screen and (max-width: 32em) {
+/* ==== NAVBAR ==== */
+    .nav-button, .nav-links {
         display: none;
+    }
+
+/* ==== FEATURES ==== */
+    .features {
+        text-align: center;
+    }
+
+/* ==== ARTICLES ==== */
+    .article-text {
+        padding: 1.875rem 1.875rem 2.5rem 1.875rem;
+    }
+
+
+/* ========= FOOTER ========== */
+
+    .footer-logo, .footer-socials, .col-2, .footer-button .button {
+    margin-bottom: 1.75rem;
     }
 }
 
-@media screen and (min-width: 64em) {
-    .hamburger, .overlay {
+
+
+/* ============ TABLET =========== */
+@media screen and (min-width: 32em) and (max-width:63em) {
+    /*==== NAVBAR ==== */
+    .nav-button, .nav-links {
         display: none;
+    }
+
+    .hero-img {
+        min-height: 25rem;
+    }
+
+    .hero-img::after {
+        background-size: 52%;
+        background-position: center  60%;
+    }
+    .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+    } 
+
+    .feature-item {
+        flex: 0 0 50%;
+    }
+
+    /* .feature-grid .feature-item {
+        max-width: 50%;
+    } */
+
+
+/* ==============  ARTICLES ===================  */
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+/* ========= FOOTER ========== */
+
+    .footer-logo, .footer-socials, .col-2, .footer-button .button {
+        margin-bottom: 1.75rem;
+    }
+}  
+
+
+ 
+
+
+/* ============== DESKTOP ================= */
+
+@media screen and (min-width: 63.9em) {
+/* =========== GENERAL ============= */
+.container-top {
+    padding-top: 6rem;
+}
+
+/* .container-right {
+    padding-right: 1.5rem;
+} */
+
+.container-bottom {
+    padding-bottom: 6rem;
+}
+
+/* .container-left {
+    padding-left: 1.5rem;
+}
+
+.container-x {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+} */
+
+.container-y {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.container-all {
+    padding-top: 6rem;
+    padding-right: 1.5rem;
+    padding-bottom: 6rem;
+    padding-left: 1.5rem;
+}
+
+
+
+
+/* ==== NAVBAR ==== */
+    .hamburger, .overlay, .mobile-links {
+        display: none;
+    }
+
+/* ==== 1ST SECTION NEXT GEN DIGITAL BANKING ==== */
+    body {
+        font-size: var(--fnt-md);
+    }    
+
+    .hero .container {
+        display: flex;
+        
+        align-items: center;
+    }
+
+    .hero-img {
+        flex: 3;
+        order: 2;
+        height: 41rem;
+        background: none;
+        /*background-position: left center; */
+    }
+
+    .hero-img::before {
+        content: '';
+        position: absolute;
+        background-image: url('./images/bg-intro-desktop.svg');
+        width: 150%;
+        height: 100%;
+        background-size: 122%;
+        background-repeat: no-repeat;
+        background-position: 0% 83%;
+    }
+
+    .hero-img::after {
+        width: 120%;
+        height: 122%;
+        background-size: 94%;
+        background-position: center 150%;
+        left: 22%;
+    }
+
+    .hero-text {
+        flex: 2;
+        order: 1;
+    }
+
+    .hero-text h1 {
+        font-size: var(--fnt-size-h1);
+    }
+
+    /* .hero .container {
+        display: flex;
+        flex-wrap: wrap; 
+        align-items: center;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .hero-text {
+         display: flex;
+        flex-direction: column; 
+        flex: 2;
+        order: 1;
+        text-align: left;
+    }
+
+    .hero-img {
+        flex: 3;
+        order: 2;
+        height: 41rem;
+        background-image: url(./images/bg-intro-desktop.svg);
+    } */
+
+
+
+
+    /* .container div:first-child {
+        padding: 0;
+        margin: 0;
+        max-width: 108.2rem;
+        background: red;
+        width: 100%;
+    } */
+
+
+/* ==== 2ND SECTION (FEATURES) ==== */
+    h2 {
+        font-size: 2.25rem;
+        margin-bottom: 2.25rem;
+    } 
+
+    .feature-grid {
+        display: flex;
+    }
+
+    .feature-intro {
+        width: 60%;
+    }
+
+    .feature-item {
+        flex: 1;
+    }
+
+    .feature-icon {
+        margin-bottom: 2.75rem;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+
+/* ================= ARTICLES ===================  */
+    .article-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+/* ================== FOOTER ============ */
+    .footer .container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 'logo link1 link2 button'
+        'socials link1 link2 copyright';
+        gap: 1rem;
+        justify-items: start;
+    }
+
+    .footer-logo {
+        grid-area: logo ;
+    }
+
+    .footer-socials {
+        grid-area: socials;
+        align-self: end;
+    }
+
+    .footer-links {
+        align-items: start;
+        justify-content: space-between;
+    }
+
+    .footer-links .col-1{
+        grid-area: link1;
+    }
+
+    .footer-links .col-2{
+        grid-area: link2;
+    }
+
+    .footer-button{
+        grid-area: button;
+        justify-self: end;
+        text-align: right;
+    }
+
+    .footer-copyright{
+        grid-area: copyright;
+        justify-self: end;
+        /* text-align: right; */
     }
 }
